@@ -15,6 +15,8 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+MEDIA_DIR = os.path.join(BASE_DIR,'media')
+
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
 STATICFILES_DIRS = (
@@ -42,7 +44,19 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'myapp',
+
+    # 3rd party
+    # 'allauth', # new
+    # 'allauth.account', # new
+    # 'allauth.socialaccount', # new
+
+    # Local
+    # 'myapp.UsersConfig',
 ]
+
+# AUTH_USER_MODEL = 'myapp.CustomUser'
+
+AUTHENTICATION_BACKENDS = ['myapp.auth_email.EmailOrUsernameModelBackend']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -123,3 +137,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
